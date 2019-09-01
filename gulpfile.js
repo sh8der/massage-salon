@@ -73,7 +73,7 @@ gulp.task('js', () => {
 });
 
 gulp.task('images', () => {
-	return gulp.src([src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|svg|ico)'], {
+	return gulp.src([src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|ico)'], {
 			since: gulp.lastRun('images')
 		})
 		.pipe(plumber())
@@ -82,7 +82,15 @@ gulp.task('images', () => {
 		.pipe(browserSync.stream());
 });
 
-gulp.task('build', gulp.series('clear', 'html', 'sass', 'js', 'images', 'font'));
+gulp.task('svg', () => {
+	return gulp.src([src_assets_folder + 'images/**/*.svg'], {
+		since: gulp.lastRun('svg')
+	})
+	.pipe(gulp.dest(dist_assets_folder + 'images'))
+	.pipe(browserSync.stream());
+});
+
+gulp.task('build', gulp.series('clear', 'html', 'sass', 'js', 'images', 'svg', 'font'));
 
 gulp.task('dev', gulp.series('html', 'sass', 'js'));
 
@@ -99,7 +107,7 @@ gulp.task('serve', () => {
 
 gulp.task('watch', () => {
 	const watchImages = [
-		src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|svg|ico)'
+		src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|ico)'
 	];
 
 	const watch = [
@@ -111,6 +119,7 @@ gulp.task('watch', () => {
 
 	gulp.watch(watch, gulp.series('dev')).on('change', browserSync.reload);
 	gulp.watch(watchImages, gulp.series('images')).on('change', browserSync.reload);
+	gulp.watch(src_assets_folder + 'images/**/*.svg', gulp.series('svg')).on('change', browserSync.reload);
 });
 
 gulp.task('default', gulp.series('build', gulp.parallel('serve', 'watch')));
