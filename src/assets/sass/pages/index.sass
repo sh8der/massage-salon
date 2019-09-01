@@ -1,20 +1,172 @@
 @import '../_includes'
-
 html, body
-	background-color: $base-color
+	background-color: $bg-color
 	display: flex
-	flex-direction: row
-	justify-content: center
+	flex-direction: column
+	justify-content: flex-start
+	align-items: center
 
-.conrainer
+*
+	color: $base-color
+
+.container
 	width: 1000px
+
+header
+	height: auto
+	width: 100vw
+	display: flex
+	align-items: center
+	flex-direction: column
+	&::before
+		content: " "
+		position: absolute
+		background-image: url('/assets/images/pattern-top-angle.webp')
+		background-repeat: no-repeat
+		background-position: 0 0
+		background-size: 100%
+		top: 0
+		left: 0
+		width: 460px
+		height: 460px
+	&::after
+		content: " "
+		position: absolute
+		transform: rotateZ(90deg)
+		background-image: url('/assets/images/pattern-top-angle.webp')
+		background-repeat: no-repeat
+		background-position: 0 0
+		background-size: 100%
+		top: 0
+		right: 0
+		width: 460px
+		height: 460px
 
 .header-logo-section
 	height: 512px
 	display: flex
 	flex-flow: row wrap
 	align-items: center
+	&-phone
+		display: flex
+		flex-flow: row wrap
+		align-content: center
+		align-items: center
+		padding-left: 50px
+		position: relative
+		top: -50px
+		&__phone-icon
+			width: 32px
+			height: 32px
+		&__link
+			margin-left: 22px
+			font-size: 24px
+			text-decoration: none
+			&:hover
+				text-decoration: underline
 	&__logo
 		width: 250px
 		img
 			width: 100%
+	&-text
+		padding-right: 50px
+		position: relative
+		top: -50px
+		&__headline
+			font-size: 24px
+			font-weight: 100
+
+.navigation-section
+	padding-top: 75px
+	padding-left: 25px
+	padding-right: 25px
+	min-height: 115px
+	&::before
+		content: " "
+		display: block
+		position: absolute
+		height: 4px
+		width: 100vw
+		left: 0
+		z-index: 2
+		background: rgb(195,150,45)
+		background: linear-gradient(90deg, rgba(195,150,45,1) 0%, rgba(204,165,83,1) 25%, rgba(231,218,132,1) 50%, rgba(204,165,83,1) 75%, rgba(195,150,45,1) 100%)
+	&__items
+		list-style: none
+		justify-content: space-between
+		a
+			text-decoration: none
+			// margin: 7px 0
+			min-height: 34px
+			// padding: 0 40px
+			color: $bg-color
+			min-width: 150px
+			text-align: center
+			font-size: 18px
+			font-weight: 800
+			&:hover
+				&::after
+					transform: rotateZ(29deg) scale(1.1)
+				&::before
+					transform: rotateZ(-29deg) scale(1.1)
+			&::after
+				content: " "
+				background: #1c1c1c
+				width: 60px
+				height: 60px
+				position: absolute
+				right: -42px
+				transform: rotateZ(29deg) scale(1)
+				top: 7px
+				z-index: 1
+				transition: transform .3s ease
+			&::before
+				content: " "
+				background: #1c1c1c
+				width: 60px
+				height: 60px
+				position: absolute
+				left: -42px
+				transform: rotateZ(-29deg) scale(1)
+				top: 7px
+				z-index: 1
+				transition: transform .3s ease
+	&__item
+		height: 34px
+		top: 4px
+		position: relative
+		justify-content: center
+		align-items: center
+		align-content: center
+		background: $base-menu
+		&:nth-child(1)
+			background: linear-gradient(to right, #947648, #9e874b)
+		&:nth-child(2)
+			background: linear-gradient(to right, #9e874b, $base-menu)
+		&:nth-child(4)
+			background: linear-gradient(to right, $base-menu, #9e874b)
+		&:nth-child(5)
+			background: linear-gradient(to right,#9e874b, #947648)
+		&::before
+			content: " "
+			position: absolute
+			background-position: top center
+			background-repeat: no-repeat
+			background: url(/assets/images/menu-pattern.webp)
+			height: 78px
+			width: 150px
+			background-size: 100%
+			top: -82px
+		&::after
+			content: " "
+			position: absolute
+			background-position: top center
+			background-repeat: no-repeat
+			-webkit-mask-image: url(/assets/images/menu-pattern.webp)
+			height: 78px
+			width: 150px
+			background-size: 100%
+			top: -82px
+			background-image: linear-gradient(to top, #aa801f, #eeb422)
+			-webkit-mask-position: top center
+			-webkit-mask-size: 100%

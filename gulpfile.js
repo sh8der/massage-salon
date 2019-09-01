@@ -35,12 +35,12 @@ gulp.task('sass', () => {
 		], {
 			since: gulp.lastRun('sass')
 		})
-		.pipe(sourcemaps.init())
+		// .pipe(sourcemaps.init())
 		.pipe(plumber())
 		.pipe(sass())
 		.pipe(autoprefixer())
 		.pipe(minifyCss())
-		.pipe(sourcemaps.write('.'))
+		// .pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(dist_assets_folder + 'css'))
 		.pipe(browserSync.stream());
 });
@@ -61,19 +61,19 @@ gulp.task('js', () => {
 		.pipe(webpack({
 			mode: 'production'
 		}))
-		.pipe(sourcemaps.init())
+		// .pipe(sourcemaps.init())
 		.pipe(babel({
 			presets: ['@babel/env']
 		}))
 		.pipe(concat('all.js'))
 		.pipe(uglify())
-		.pipe(sourcemaps.write('.'))
+		// .pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(dist_assets_folder + 'js'))
 		.pipe(browserSync.stream());
 });
 
 gulp.task('images', () => {
-	return gulp.src([src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|ico)'], {
+	return gulp.src([src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|ico|webp)'], {
 			since: gulp.lastRun('images')
 		})
 		.pipe(plumber())
@@ -107,7 +107,7 @@ gulp.task('serve', () => {
 
 gulp.task('watch', () => {
 	const watchImages = [
-		src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|ico)'
+		src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|ico|webp)'
 	];
 
 	const watch = [
