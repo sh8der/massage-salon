@@ -12,6 +12,10 @@ html, body
 .container
 	width: 1000px
 
+.octagon-mask
+	clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)
+
+
 header
 	height: auto
 	width: 100vw
@@ -197,3 +201,21 @@ header
 		padding-top: 55px
 	&-items
 		list-style: none
+	&-item
+		margin-bottom: 52px
+		&:nth-child(even) &__text
+			margin-right: 100px
+			margin-left: 0
+		&__text
+			margin-left: 100px
+		&__text *
+			font-size: 24px
+			line-height: 28px
+			font-weight: 300
+		&__img-wrapp
+			width: 350px
+			height: 350px
+			background: rgb(195,150,45)
+			background: linear-gradient(90deg, rgba(195,150,45,1) 0%, rgba(204,165,83,1) 25%, rgba(231,218,132,1) 50%, rgba(204,165,83,1) 75%, rgba(195,150,45,1) 100%)
+			img
+				width: calc( 350px - 14px )
