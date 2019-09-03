@@ -29,13 +29,13 @@ gulp.task('html', () => {
 });
 
 gulp.task('sass', () => {
-	// return gulp.src([
-		// src_assets_folder + 'sass/**/*.sass'
-	// ], {
-		// since: gulp.lastRun('sass')
-	// })
-	return gulp.src(src_assets_folder + 'sass/**/*.sass')
-		.pipe(sourcemaps.init())
+		// return gulp.src([
+		// 	src_assets_folder + 'sass/**/*.sass'
+		// ], {
+		// 	since: gulp.lastRun('sass')
+		// })
+		return gulp.src(src_assets_folder + 'sass/**/*.sass')
+		// .pipe(sourcemaps.init())
 		.pipe(plumber())
 		.pipe(sass({
 			outputStyle: 'expanded',
@@ -43,7 +43,7 @@ gulp.task('sass', () => {
 		}))
 		.pipe(autoprefixer())
 		.pipe(minifyCss())
-		.pipe(sourcemaps.write('.'))
+		// .pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(dist_assets_folder + 'css'))
 		.pipe(browserSync.stream());
 });

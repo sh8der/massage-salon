@@ -1,0 +1,35 @@
+@import '../vars'
+@import '../mixins'
+
+.full-services-list-desc
+	padding-top: 55px
+	&__main-text
+		display: flex
+		flex-direction: column
+		align-items: center
+		h3
+			margin-top: 86px
+			font-size: 24px
+		&--full-width
+			width: 100%
+		&--flower-bullets
+			list-style: none
+			text-align: left
+			li
+				position: relative
+				font-size: 24px
+				line-height: 28px
+				font-weight: 800
+				&::after
+					content: " "
+					display: block
+					position: absolute
+					top: 50%
+					transform: translate(0, -60%)
+					left: -24px
+					width: 16px
+					height: 16px
+					background-size: 100%
+					background-repeat: no-repeat
+					background-position: center center
+					background-image: url('/assets/images/icon-flower.webp')
