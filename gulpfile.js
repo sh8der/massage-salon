@@ -29,18 +29,21 @@ gulp.task('html', () => {
 });
 
 gulp.task('sass', () => {
-	return gulp.src([
-			src_assets_folder + 'sass/**/*.sass',
-			src_assets_folder + 'scss/**/*.scss'
-		], {
-			since: gulp.lastRun('sass')
-		})
-		// .pipe(sourcemaps.init())
+	// return gulp.src([
+		// src_assets_folder + 'sass/**/*.sass'
+	// ], {
+		// since: gulp.lastRun('sass')
+	// })
+	return gulp.src(src_assets_folder + 'sass/**/*.sass')
+		.pipe(sourcemaps.init())
 		.pipe(plumber())
-		.pipe(sass())
+		.pipe(sass({
+			outputStyle: 'expanded',
+			indentedSyntax: true
+		}))
 		.pipe(autoprefixer())
 		.pipe(minifyCss())
-		// .pipe(sourcemaps.write('.'))
+		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(dist_assets_folder + 'css'))
 		.pipe(browserSync.stream());
 });
@@ -113,7 +116,6 @@ gulp.task('watch', () => {
 	const watch = [
 		src_folder + '**/*.html',
 		src_assets_folder + 'sass/**/*.sass',
-		src_assets_folder + 'scss/**/*.scss',
 		src_assets_folder + 'js/**/*.js'
 	];
 

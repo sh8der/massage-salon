@@ -1,25 +1,7 @@
-@import '../_includes'
-html, body
-	background-color: $bg-color
-	display: flex
-	flex-direction: column
-	justify-content: flex-start
-	align-items: center
+@import '../vars'
+@import '../mixins'
 
-*
-	color: $base-color
-
-*::selection
-	background-color: $base-color
-	color: $bg-color
-
-.container
-	width: 1000px
-
-.octagon-mask
-	clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)
-
-header
+.header
 	height: auto
 	width: 100vw
 	display: flex
@@ -199,6 +181,7 @@ header
 		margin: 0 0 22px
 
 .services
+	position: relative
 	width: 100vw
 	display: flex
 	flex-direction: column
@@ -207,6 +190,7 @@ header
 		padding-top: 55px
 	&-items
 		list-style: none
+		margin-bottom: 98px
 	&-item
 		margin-bottom: 52px
 		&:nth-child(even) &__text
@@ -224,3 +208,28 @@ header
 			height: 350px
 			img
 				width: calc( 350px - 14px )
+	&__bg-pattern
+		position: absolute
+		top: -420px
+		&::after
+			@include simple-edge-pattern
+			content: " "
+			display: block
+			position: absolute
+			left: inherit
+			right: inherit
+		&--right
+			right: 0
+			&::after
+				top: 1062px
+		&--left
+			left: 0
+			transform: rotateZ(180deg)
+			&::after
+				top: -1062px
+		&--simple
+			@include simple-edge-pattern
+
+.empty-footer
+	min-height: 300px
+	width: 100%
