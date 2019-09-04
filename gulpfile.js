@@ -64,13 +64,13 @@ gulp.task('js', () => {
 		.pipe(webpack({
 			mode: 'production'
 		}))
-		// .pipe(sourcemaps.init())
+		.pipe(sourcemaps.init())
 		.pipe(babel({
 			presets: ['@babel/env']
 		}))
 		.pipe(concat('all.js'))
 		.pipe(uglify())
-		// .pipe(sourcemaps.write('.'))
+		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(dist_assets_folder + 'js'))
 		.pipe(browserSync.stream());
 });
