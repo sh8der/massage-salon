@@ -1,35 +1,57 @@
 @import '../vars'
 @import '../mixins'
 
-.full-services-list-desc
-	padding-top: 55px
-	&__main-text
+.services-full-list
+	width: 100%
+	&__item-wrapp
+		width: 100%
+		background-color: #333333
 		display: flex
 		flex-direction: column
 		align-items: center
-		h3
-			margin-top: 86px
-			font-size: 24px
-		&--full-width
+		&::after
+			position: relative
+			left: 0
+			top: 0
 			width: 100%
-		&--flower-bullets
-			list-style: none
-			text-align: left
-			li
-				position: relative
-				font-size: 24px
-				line-height: 28px
-				font-weight: 800
-				&::after
-					content: " "
-					display: block
-					position: absolute
-					top: 50%
-					transform: translate(0, -60%)
-					left: -24px
-					width: 16px
-					height: 16px
-					background-size: 100%
-					background-repeat: no-repeat
-					background-position: center center
-					background-image: url('/assets/images/icon-flower.webp')
+			height: 100px
+			transform: none
+			background: #1d1d1d url('/assets/images/services-list-space-pattern.webp')
+			background-position: left center
+			background-repeat: repeat
+			background-size: auto
+			.no-webp &
+				background: #1d1d1d url('/assets/images/services-list-space-pattern.png')
+		&:last-child
+			&::after
+				display: none
+				visibility: hidden
+	&__items
+		width: 100%
+		display: flex
+		flex-direction: column
+		align-items: center
+	&__item
+		padding: 44px 20px
+		display: flex
+		align-items: center
+	&__preview
+		width: 250px
+		& .services-item__img-wrapp
+			width: 250px
+			height: 250px
+			img
+				width: 242px
+				height: 242px
+	&__description
+		padding-left: 45px
+		margin-right: auto
+		h2
+			font-weight: 800
+			font-size: 24px
+			line-height: 28px
+			margin-bottom: 21px
+		p
+			font-weight: 500
+			font-size: 18px
+			line-height: 22px

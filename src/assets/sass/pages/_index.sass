@@ -19,6 +19,8 @@
 		width: 460px
 		height: 460px
 		z-index: 1
+		.no-webp &
+			background-image: url('/assets/images/pattern-top-angle.webp')
 	&::after
 		content: " "
 		position: absolute
@@ -32,6 +34,8 @@
 		width: 460px
 		height: 460px
 		z-index: 1
+		.no-webp &
+			background-image: url('/assets/images/pattern-top-angle.png')
 
 .header-logo-section
 	height: 512px
@@ -87,9 +91,7 @@
 		justify-content: space-between
 		a
 			text-decoration: none
-			// margin: 7px 0
 			min-height: 34px
-			// padding: 0 40px
 			color: $bg-color
 			min-width: 150px
 			text-align: center
@@ -148,6 +150,10 @@
 			width: 150px
 			background-size: 100%
 			top: -82px
+			transform: none
+			left: 0
+			.no-webp &
+				background: url('/assets/images/menu-pattern.png')
 		&::after
 			content: " "
 			position: absolute
@@ -161,12 +167,19 @@
 			background-image: linear-gradient(to top, #aa801f, #eeb422)
 			-webkit-mask-position: top center
 			-webkit-mask-size: 100%
+			transform: none
+			left: 0
+			.no-webp &
+				-webkit-mask-image: url('/assets/images/menu-pattern.png')
+
 
 .main-text
 	&__wrapper
 		width: 800px
 		text-align: center
 		padding-top: 92px
+		&--full-width
+			width: 100%
 		p
 			margin-bottom: 44px
 			font-size: 18px
@@ -196,6 +209,9 @@
 		&:nth-child(even) &__text
 			margin-right: 100px
 			margin-left: 0
+		&::after
+			display: none
+			visibility: hidden
 		&__text
 			margin-left: 100px
 		&__text *
