@@ -1,6 +1,81 @@
 @import '../vars'
 @import '../mixins'
 
-.contact-block
-	&__wrapp
-		padding: 50px 0
+.contact
+	z-index: 3
+	width: 100%
+	display: flex
+	flex-direction: column
+	align-items: center
+	position: relative
+	&-block
+		padding: 0 25px
+		position: relative
+		&__wrapper
+			margin-top: 125px
+			margin-left: 20px
+			margin-right: 20px
+			position: relative
+		&__gradient-bg
+			height: 226px
+			display: flex
+			flex-direction: column
+			align-items: center
+			justify-content: center
+			background: #2019ff
+			background: linear-gradient(90deg, rgba(178,132,63,1) 0%, rgba(123,91,42,1) 25%, rgba(225,212,131,1) 50%, rgba(123,91,42,1) 75%, rgba(178,132,63,1) 100%)
+		.header-logo-section-phone
+			top: 0
+		&__text
+			background-color: $bg-color
+			width: calc(100% - 12px)
+			height: calc(100% - 12px)
+			clip-path: polygon(0 21%,5% 21%,5% 0,95% 0,95% 21%,100% 21%,100% 79%,95% 79%,95% 100%,5% 100%,5% 79%,0 79%)
+			display: flex
+			flex-direction: column
+			align-items: center
+			justify-content: space-between
+			padding: 36px 0
+			.header-logo-section-phone
+				padding-left: 0
+				justify-content: center
+				margin-left: -45px
+				&__link
+					font-size: 30px
+		&__pattern
+			width: 60px
+			height: 60px
+			position: absolute
+			background-size: 100%
+			background-repeat: no-repeat
+			background-position: center center
+			background-image: url('/assets/images/contact-border-pattern.webp')
+			&--left-top
+				top: 0px
+				left: 0px
+				transform: translate(-23px, -23px)
+			&--right-top
+				top: 0px
+				right: 0px
+				transform: rotateZ(90deg) translate(-23px, -23px)
+			&--left-bottom
+				left: 0px
+				bottom: 0px
+				transform: rotateZ(-90deg) translate(-23px,-23px)
+			&--right-bottom
+				right: 0px
+				bottom: 0px
+				transform: rotateZ(180deg) translate(-23px,-23px)
+			.no-webp &
+				background-image: url('/assets/images/contact-border-pattern.png')
+
+.contact-block-map
+	margin: 100px 0
+	&__wrapper
+		padding: 10px
+		background: rgb(195,150,45)
+		background: linear-gradient(90deg, rgba(195,150,45,1) 0%, rgba(150,117,48,1) 25%, rgba(230,216,131,1) 50%, rgba(150,117,48,1) 75%, rgba(195,150,45,1) 100%)
+	&__map
+		width: 100%
+		height: 480px
+		display: block

@@ -42,7 +42,13 @@ gulp.task('sass', () => {
 			indentedSyntax: true
 		}))
 		.pipe(autoprefixer())
-		.pipe(minifyCss())
+		.pipe(minifyCss({
+			level: {
+				1: {
+					specialComments: 0
+				}
+			}
+		}))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(dist_assets_folder + 'css'))
 		.pipe(browserSync.stream());
