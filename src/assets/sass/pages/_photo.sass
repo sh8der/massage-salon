@@ -1,0 +1,21 @@
+@import '../vars'
+@import '../mixins'
+
+.photo
+	position: relative
+	display: flex
+	flex-direction: column
+	align-items: center
+	width: 100%
+	margin: 100px 0
+	&-block
+		&__items
+			margin: 0 auto
+		&__item
+			display: block
+			width: 220px
+			margin-bottom: 10px
+			padding: 3px
+			opacity: 0
+			background: rgb(195,150,45)
+			background: linear-gradient(90deg, rgba(195,150,45,1) 0%, rgba(150,117,48,1) 25%, rgba(230,216,131,1) 50%, rgba(150,117,48,1) 75%, rgba(195,150,45,1) 100%)
