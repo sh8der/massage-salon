@@ -11,6 +11,9 @@
 		padding-left: 25px
 		padding-right: 25px
 	.navigation-section
+		padding-top: 0
+		min-height: auto
+	.navigation-section__items
 		display: none
 		visibility: hidden
 	.header-logo-section
@@ -29,3 +32,161 @@
 		width: 100%
 		height: 100%
 		padding: 5px
+	.open-mobile-menu
+		display: block
+		visibility: visible
+
+	.mobile-menu-taransform
+		position: fixed
+		left: 0
+		top: 0
+		width: 100vw
+		height: 100vh
+		z-index: 1000
+		background: #1c1c1c
+		flex-direction: column
+		justify-content: center
+		padding: 30px
+		align-items: flex-start
+		&--visible
+			visibility: visible
+			display: flex
+			.navigation-section__item
+				background: transparent
+				margin-bottom: 40px
+				a
+					color: $base-color
+					font-size: 54px
+					min-width: 100%
+					&::after, &::before
+						display: none
+				&::after, &::before
+					display: none
+
+@media screen and ( max-width: 941px )
+	.services-item
+		&:nth-child(even) &__text
+			margin: 0
+			padding-right: 50px
+		.side-col
+			width: 50%
+			height: auto
+		&__text
+			width: 50%
+			padding-left: 50px
+			margin: 0
+		&__img-wrapp
+			width: fit-content
+			margin: auto
+
+	.services-full-list__preview
+		width: 30%
+	.services-full-list__description
+		width: 70%
+
+	.bg-pattern-hard--left
+		opacity: .4
+	.bg-pattern-hard--right
+		display: none
+
+@media screen and ( max-width: 826px )
+	.header-logo-section
+		flex-flow: column wrap
+		justify-content: flex-start
+		padding-top: 30px
+		width: 100%
+	.header-logo-section__logo
+		width: 200px
+		max-width: 100%
+	.header-logo-section-phone
+		top: 0
+		padding: 25px 0
+		max-width: 100%
+		left: 15px
+	.header-logo-section-text
+		max-width: 100%
+		padding: 0
+		top: 20px
+		justify-content: center
+		align-items: center
+
+	.services-full-list__item
+		flex-direction: column
+	.services-full-list__description
+		margin-top: 30px
+		text-align: center
+		padding: 0
+	.services-full-list__description, .services-full-list__preview
+		width: 100%
+
+	.defaul-list li
+		margin-bottom: 15px
+
+	.contact-block__wrapper
+		margin-top: 30px
+		margin-left: 0
+		margin-right: 0
+	.contact-block__pattern
+		display: none
+	.rabbet-mask
+		clip-path: none
+	.contact-block__text
+		clip-path: none
+		width: 100%
+		height: auto
+		& > *
+			text-align: center
+			justify-content: center
+			align-items: center
+	.contact-block__gradient-bg
+		height: auto
+		padding: 5px
+
+	.contact-block__text .header-logo-section-phone
+		margin: 0
+
+
+
+@media screen and ( max-width: 692px )
+	.header-logo-section-phone
+		width: 100%
+		justify-content: center
+	.header-logo-section-text
+		width: 100%
+	.header
+		&::before
+			width: 350px
+			height: 350px
+		&::after
+			display: none
+
+	.photo-block__item
+		width: 150px
+
+	.services__bg-pattern--right
+		display: none
+
+@media screen and ( max-width: 580px )
+	.services-item
+		&:nth-child(even) &__text
+			width: 100%
+			margin: 0
+			padding: 15px
+			text-align: center
+			justify-content: center
+			align-items: center
+			margin-top: 55px
+		.side-col
+			width: 100%
+			height: auto
+		&__text
+			width: 100%
+			margin: 0
+			padding: 15px
+			text-align: center
+			justify-content: center
+			align-items: center
+			margin-top: 55px
+	.header-logo-section-phone
+		left: 0
+

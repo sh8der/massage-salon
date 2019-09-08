@@ -38,3 +38,18 @@ if (document.querySelector('.photo-block__items') !== null) {
 	})
 
 }
+
+const mobileMenuBtn = document.querySelector('.open-mobile-menu')
+const menuList = document.querySelector('ul.navigation-section__items')
+
+if (document.readyState !== 'loading') {
+	init();
+} else {
+	document.addEventListener('DOMContentLoaded', () => init());
+}
+
+function init() {
+	mobileMenuBtn.addEventListener("click", (e) => {
+		menuList.classList.add("mobile-menu-taransform", "mobile-menu-taransform--visible")
+	})
+}

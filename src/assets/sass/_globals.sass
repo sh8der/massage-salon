@@ -136,3 +136,21 @@ ul
 			background-image: url('/assets/images/icon-flower.webp')
 			.no-webp &
 				background-image: url('/assets/images/icon-flower.png')
+
+.open-mobile-menu
+	display: none
+	visibility: hidden
+	border: none
+	color: $bg-color
+	padding: 10px 85px
+	margin: 0 auto
+	text-decoration: none
+	text-align: center
+	font-size: 18px
+	font-weight: 800
+	z-index: 4
+	top: 2px
+	position: relative
+	transform: translateY(-50%)
+	clip-path: polygon(85% 0,100% 50%,85% 100%,15% 100%,0 50%,15% 0)
+	+h-main-gradient
