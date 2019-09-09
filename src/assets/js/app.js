@@ -48,8 +48,42 @@ if (document.readyState !== 'loading') {
 	document.addEventListener('DOMContentLoaded', () => init());
 }
 
+
+
 function init() {
 	mobileMenuBtn.addEventListener("click", (e) => {
-		menuList.classList.add("mobile-menu-taransform", "mobile-menu-taransform--visible")
+		let isClickMenuBtn = menuList.classList.contains("mobile-menu-taransform")
+
+		if ( isClickMenuBtn === false )
+			menuList.classList.add("mobile-menu-taransform", "mobile-menu-taransform--visible")
+
+			const menuOpenAnimation = anime.timeline({
+				direction: 'normal',
+				loop: false,
+				easing: 'easeInOutQuad',
+				autoplay: false
+			});
+			
+			menuOpenAnimation.add({
+				targets: menuList,			
+				opacity: 1			
+			})
+			.add({
+				targets: 'ul .navigation-section__item',
+				top: 0,
+				opacity: 1,	
+				easing: 'linear',
+				duration: 200,
+				delay: function (el, i, l) {
+					return i * 50;
+				}
+			})
+
+		if ( isClickMenuBtn === false ) {
+			menuOpenAnimation.play()
+		} else {
+			menuOpenAnimation.reverse()			
+		}
+
 	})
 }

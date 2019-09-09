@@ -11,7 +11,7 @@
 		padding-left: 25px
 		padding-right: 25px
 	.navigation-section
-		padding-top: 0
+		padding-top: 40px
 		min-height: auto
 	.navigation-section__items
 		display: none
@@ -33,7 +33,7 @@
 		height: 100%
 		padding: 5px
 	.open-mobile-menu
-		display: block
+		display: flex
 		visibility: visible
 
 	.mobile-menu-taransform
@@ -48,20 +48,94 @@
 		justify-content: center
 		padding: 30px
 		align-items: flex-start
+		opacity: 0
 		&--visible
 			visibility: visible
 			display: flex
+			flex-direction: column
+			align-items: center
 			.navigation-section__item
-				background: transparent
 				margin-bottom: 40px
-				a
-					color: $base-color
-					font-size: 54px
-					min-width: 100%
-					&::after, &::before
-						display: none
+				top: -30px
+				opacity: 0
+				// width: 100%
 				&::after, &::before
 					display: none
+
+	.mobile-page-headline
+		display: flex
+		flex-direction: column
+		align-items: center
+		position: relative
+		&__title
+			height: 34px
+			top: 4px
+			position: relative
+			justify-content: center
+			align-items: center
+			align-content: center
+			background: $base-menu
+			color: $bg-color
+			font-weight: bold
+			width: 150px
+			text-align: center
+			padding: 5px
+			+h-main-gradient
+			&::after
+				content: " "
+				background: #1c1c1c
+				width: 60px
+				height: 60px
+				position: absolute
+				right: -42px
+				transform: rotateZ(29deg) scale(1)
+				top: 7px
+				z-index: 1
+				transition: transform .3s ease
+			&::before
+				content: " "
+				background: #1c1c1c
+				width: 60px
+				height: 60px
+				position: absolute
+				left: -42px
+				transform: rotateZ(-29deg) scale(1)
+				top: 7px
+				z-index: 1
+				transition: transform .3s ease
+		&::before
+			content: " "
+			position: absolute
+			background-position: top center
+			background-repeat: no-repeat
+			background: url('/assets/images/menu-pattern.webp')
+			height: 78px
+			width: 150px
+			background-size: 100%
+			top: -82px
+			transform: none
+			left: 50%
+			transform: translateX(-50%)
+			.no-webp &
+				background: url('/assets/images/menu-pattern.png')
+		&::after
+			content: " "
+			position: absolute
+			background-position: top center
+			background-repeat: no-repeat
+			-webkit-mask-image: url('/assets/images/menu-pattern.webp')
+			height: 78px
+			width: 150px
+			background-size: 100%
+			top: -82px
+			background-image: linear-gradient(to top, #aa801f, #eeb422)
+			-webkit-mask-position: top center
+			-webkit-mask-size: 100%
+			transform: none
+			left: 50%
+			transform: translateX(-50%)
+			.no-webp &
+				-webkit-mask-image: url('/assets/images/menu-pattern.png')
 
 @media screen and ( max-width: 941px )
 	.services-item
@@ -98,17 +172,20 @@
 	.header-logo-section__logo
 		width: 200px
 		max-width: 100%
+		margin-bottom: 15px
 	.header-logo-section-phone
 		top: 0
 		padding: 25px 0
 		max-width: 100%
 		left: 15px
+		order: 2
 	.header-logo-section-text
 		max-width: 100%
 		padding: 0
 		top: 20px
 		justify-content: center
 		align-items: center
+		margin-bottom: 15px
 
 	.services-full-list__item
 		flex-direction: column
