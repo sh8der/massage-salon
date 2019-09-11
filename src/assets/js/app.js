@@ -41,49 +41,49 @@ if (document.querySelector('.photo-block__items') !== null) {
 
 const mobileMenuBtn = document.querySelector('.open-mobile-menu')
 const menuList = document.querySelector('ul.navigation-section__items')
+const closeMobileMenu = document.createElement('img')
+closeMobileMenu.classList.add('close-mobile-menu')
+closeMobileMenu.src = "/assets/images/close.svg"
 
-if (document.readyState !== 'loading') {
-	init();
-} else {
-	document.addEventListener('DOMContentLoaded', () => init());
+const menuOpenAnimation = anime.timeline({
+	easing: 'easeInOutQuad',
+	autoplay: false
+})
+
+
+closeMobileMenu.onclick = () => anime({
+	targets: menuList,
+	opacity: 0,
+	duration: 3000
+})
+
+function openMenu() {
+	menuList.classList.add("mobile-menu-taransform", "mobile-menu-taransform--visible")
+	menuList.appendChild(closeMobileMenu)
+
+	menuOpenAnimation.add({
+			targets: menuList,
+			opacity: 1,
+			duration: 200
+		})
+		.add({
+			targets: 'ul .navigation-section__item',
+			opacity: 1,
+			top: 0,
+			easing: 'easeInOutQuad',
+			duration: 200,
+			delay: function (el, i, l) {
+				return i * 50;
+			}
+		})
+		.add({
+			targets: closeMobileMenu,
+			opacity: 1,
+			duration: 500,
+			rotate: 90
+		})
+
+	menuOpenAnimation.play()
 }
 
-
-
-function init() {
-	mobileMenuBtn.addEventListener("click", (e) => {
-		let isClickMenuBtn = menuList.classList.contains("mobile-menu-taransform")
-
-		if ( isClickMenuBtn === false )
-			menuList.classList.add("mobile-menu-taransform", "mobile-menu-taransform--visible")
-
-			const menuOpenAnimation = anime.timeline({
-				direction: 'normal',
-				loop: false,
-				easing: 'easeInOutQuad',
-				autoplay: false
-			});
-			
-			menuOpenAnimation.add({
-				targets: menuList,			
-				opacity: 1			
-			})
-			.add({
-				targets: 'ul .navigation-section__item',
-				top: 0,
-				opacity: 1,	
-				easing: 'linear',
-				duration: 200,
-				delay: function (el, i, l) {
-					return i * 50;
-				}
-			})
-
-		if ( isClickMenuBtn === false ) {
-			menuOpenAnimation.play()
-		} else {
-			menuOpenAnimation.reverse()			
-		}
-
-	})
-}
+mobileMenuBtn.addEventListener("click", openMenu)
