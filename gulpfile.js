@@ -68,7 +68,8 @@ gulp.task('js', () => {
 		})
 		.pipe(plumber())
 		.pipe(webpack({
-			mode: 'production'
+			// mode: 'production'
+			mode: 'development'
 		}))
 		.pipe(sourcemaps.init())
 		.pipe(babel({

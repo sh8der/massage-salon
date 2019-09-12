@@ -51,11 +51,15 @@ const menuOpenAnimation = anime.timeline({
 })
 
 
-closeMobileMenu.onclick = () => anime({
-	targets: menuList,
-	opacity: 0,
-	duration: 3000
-})
+closeMobileMenu.onclick = () => {
+	menuList.classList.remove("mobile-menu-taransform", "mobile-menu-taransform--visible")
+
+	anime({
+		targets: menuList,
+		opacity: 0,
+		duration: 500
+	})
+}
 
 function openMenu() {
 	menuList.classList.add("mobile-menu-taransform", "mobile-menu-taransform--visible")
@@ -84,6 +88,11 @@ function openMenu() {
 		})
 
 	menuOpenAnimation.play()
+	menuOpenAnimation.finished.then(() => {
+		anime.remove(menuList)
+		anime.remove('.navigation-section__item')
+		anime.remove(closeMobileMenu)
+	});
 }
 
 mobileMenuBtn.addEventListener("click", openMenu)
