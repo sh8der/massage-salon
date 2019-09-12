@@ -172,7 +172,6 @@
 			.no-webp &
 				-webkit-mask-image: url('/assets/images/menu-pattern.png')
 
-
 .main-text
 	z-index: 3
 	&__wrapper
@@ -255,3 +254,37 @@
 
 .mobile-page-headline
 	display: none
+
+.lang-list
+	width: 100vw
+	display: flex
+	flex-flow: row wrap
+	align-items: center
+	justify-content: center
+	z-index: 3
+	&__items
+		display: flex
+		list-style: none
+		position: relative
+		top: -50px
+	&__item
+		margin: 0 5px
+		&::after
+			display: none
+		a
+			margin: 0
+			background: #222
+			font-size: 14px
+			color: #8c8c8c
+			border-radius: 50em
+			width: 40px
+			height: 40px
+			display: flex
+			justify-content: center
+			align-items: center
+			text-decoration: none
+			transition: box-shadow .2s ease-in-out
+			&:hover
+				box-shadow: 0 0 5px -2px
+		&.active a
+			box-shadow: 0 0 5px -2px

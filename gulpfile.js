@@ -29,11 +29,6 @@ gulp.task('html', () => {
 });
 
 gulp.task('sass', () => {
-		// return gulp.src([
-		// 	src_assets_folder + 'sass/**/*.sass'
-		// ], {
-		// 	since: gulp.lastRun('sass')
-		// })
 		return gulp.src(src_assets_folder + 'sass/**/*.sass')
 		.pipe(sourcemaps.init())
 		.pipe(plumber())
@@ -111,7 +106,7 @@ gulp.task('serve', () => {
 		},
 		port: 3000,
 		open: false,
-		tunnel: 'sh8der'
+		tunnel: true
 	});
 });
 
