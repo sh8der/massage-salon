@@ -1,11 +1,17 @@
+@media screen and ( max-width: 1300px )
+	.bg-pattern-hard--left
+		transform: translate(-80%, -50%)
+	.bg-pattern-hard--right
+		transform: translate(80%, -50%)
+
 @media screen and ( max-width: 1000px )
 	.header
 		&::before
 			width: 300px
 			height: 300px
-		&::after
-			width: 300px
-			height: 300px
+			&::after
+				width: 300px
+				height: 300px
 	.container
 		width: 100%
 		padding-left: 25px
@@ -56,8 +62,9 @@
 			align-items: center
 			.navigation-section__item
 				margin-bottom: 40px
-				top: -30px
 				opacity: 0
+				top: 30px
+				transform: scale(1.2)
 				+h-main-gradient
 				&::after, &::before
 					display: none
@@ -138,6 +145,8 @@
 				-webkit-mask-image: url('/assets/images/menu-pattern.png')
 
 @media screen and ( max-width: 941px )
+	.main-text
+		width: 100vw
 	.services-item
 		&:nth-child(even) &__text
 			margin: 0
@@ -222,8 +231,6 @@
 	.contact-block__text .header-logo-section-phone
 		margin: 0
 
-
-
 @media screen and ( max-width: 692px )
 	.header-logo-section-phone
 		width: 100%
@@ -242,6 +249,18 @@
 
 	.services__bg-pattern--right
 		display: none
+		.navigation-section__items &
+			display: block
+			right: -80px
+			top: 387px
+			z-index: 1
+
+	.navigation-section__items
+		.services__bg-pattern--simple
+			width: 210px
+
+	.lang-list__items
+		top: -75px
 
 @media screen and ( max-width: 580px )
 	.services-item
@@ -266,4 +285,3 @@
 			margin-top: 55px
 	.header-logo-section-phone
 		left: 0
-

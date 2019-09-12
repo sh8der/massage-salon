@@ -40,50 +40,58 @@ if (document.querySelector('.photo-block__items') !== null) {
 }
 
 const mobileMenuBtn = document.querySelector('.open-mobile-menu')
-const menuList = document.querySelector('ul.navigation-section__items')
+const menuList = document.querySelector('.navigation-section__items')
 const closeMobileMenu = document.createElement('img')
 closeMobileMenu.classList.add('close-mobile-menu')
 closeMobileMenu.src = "/assets/images/close.svg"
 
-const menuOpenAnimation = anime.timeline({
-	easing: 'easeInOutQuad',
-	autoplay: false
-})
-
-
-closeMobileMenu.onclick = () => anime({
-	targets: menuList,
-	opacity: 0,
-	duration: 3000
-})
-
-function openMenu() {
-	menuList.classList.add("mobile-menu-taransform", "mobile-menu-taransform--visible")
+if (window.innerWidth <= 700) {
 	menuList.appendChild(closeMobileMenu)
-
-	menuOpenAnimation.add({
-			targets: menuList,
-			opacity: 1,
-			duration: 200
-		})
-		.add({
-			targets: 'ul .navigation-section__item',
-			opacity: 1,
-			top: 0,
-			easing: 'easeInOutQuad',
-			duration: 200,
-			delay: function (el, i, l) {
-				return i * 50;
-			}
-		})
-		.add({
-			targets: closeMobileMenu,
-			opacity: 1,
-			duration: 500,
-			rotate: 90
-		})
-
-	menuOpenAnimation.play()
+	let patternMobileLeft = document.createElement('div')
+	let patternMobileRight = document.createElement('div')
+	patternMobileLeft.classList.add("services__bg-pattern", "services__bg-pattern--left", "services__bg-pattern--simple")
+	patternMobileRight.classList.add("services__bg-pattern", "services__bg-pattern--right", "services__bg-pattern--simple")
+	menuList.appendChild(patternMobileLeft)
+	menuList.appendChild(patternMobileRight)
 }
 
-mobileMenuBtn.addEventListener("click", openMenu)
+closeMobileMenu.onclick = () => {
+	anime({
+		easing: 'easeInOutQuad',
+		duration: 500,
+		targets: menuList,
+		opacity: 0,
+		complete: () => {
+			menuList.classList.remove("mobile-menu-taransform")
+			menuList.classList.remove("mobile-menu-taransform--visible")
+		}
+	})
+}
+
+mobileMenuBtn.addEventListener("click", () => {
+	console.log('click')
+	menuList.classList.add("mobile-menu-taransform", "mobile-menu-taransform--visible")
+	anime({
+		easing: 'easeOutExpo',
+		targets: menuList,
+		opacity: 1,
+		duration: 700
+	})
+	anime({
+		easing: 'easeOutExpo',
+		targets: '.navigation-section__item',
+		opacity: [0, 1],
+		top: [-30, 0],
+		duration: 1100,
+		delay: function (el, i, l) {
+			return i * 100;
+		}
+	}, '-=600')
+	anime({
+		easing: 'easeOutExpo',
+		targets: closeMobileMenu,
+		opacity: [0, 1],
+		duration: 1000,
+		rotate: [0, 180]
+	}, '500')
+})
